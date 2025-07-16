@@ -32,7 +32,7 @@ def landing():
 
 @app.route('/dashboard')
 def index():
-    # Get latest 50 attendance records
+    # Getting latest 50 attendance records
     attendance_ref = db.collection('attendance').order_by('timestamp', direction=firestore.Query.DESCENDING).limit(50)
     attendance_docs = attendance_ref.stream()
     attendance_records = []
