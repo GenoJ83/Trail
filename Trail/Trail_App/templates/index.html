@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trail Attendance Dashboard</title>
+    <link rel="stylesheet" href="/static/css/tailwind.css">
+</head>
+<body class="bg-gradient-to-br from-blue-500 to-green-400 min-h-screen">
+    <div class="container mx-auto p-4 flex flex-col items-center justify-center min-h-screen">
+        <div class="bg-white bg-opacity-90 p-8 rounded-lg shadow-lg w-full max-w-3xl">
+            <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Trail Attendance Dashboard</h1>
+            <table class="min-w-full bg-white border border-gray-300 rounded-lg overflow-hidden">
+                <thead class="bg-blue-100">
+                    <tr>
+                        <th class="py-2 px-4 border-b">Student Name</th>
+                        <th class="py-2 px-4 border-b">RFID</th>
+                        <th class="py-2 px-4 border-b">Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in attendance_records %}
+                    <tr class="hover:bg-blue-50">
+                        <td class="py-2 px-4 border-b">{{ record.name }}</td>
+                        <td class="py-2 px-4 border-b">{{ record.rfid }}</td>
+                        <td class="py-2 px-4 border-b">{{ record.timestamp }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="mt-6 text-center">
+                <a href="/" class="text-blue-600 hover:underline">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

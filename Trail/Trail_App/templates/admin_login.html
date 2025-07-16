@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #3b82f6, #22d3ee);
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            background: #fff;
+            opacity: 0.95;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .login-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #444;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+        .form-input:focus {
+            border-color: #2563eb;
+            outline: none;
+        }
+        .login-btn {
+            width: 100%;
+            background: #2563eb;
+            color: #fff;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            transition: background 0.2s;
+        }
+        .login-btn:hover {
+            background: #1d4ed8;
+        }
+        .login-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        .login-link {
+            color: #2563eb;
+            text-decoration: underline;
+            font-size: 0.98rem;
+        }
+        .error-message {
+            color: #dc2626;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{{ url_for('landing') }}" class="navbar-logo">Trail</a>
+        <a href="{{ url_for('landing') }}" class="navbar-link">Back to Home</a>
+    </nav>
+    <div class="login-card">
+        <div class="login-title">Admin Login</div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="error-message">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <form method="POST">
+            <div class="form-group">
+                <label class="form-label" for="username">Username</label>
+                <input class="form-input" type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-input" type="password" id="password" name="password" required>
+            </div>
+            <button class="login-btn" type="submit">Login</button>
+        </form>
+        <div class="login-links">
+            <a href="{{ url_for('admin_register') }}" class="login-link">Create account</a>
+            <a href="{{ url_for('admin_reset') }}" class="login-link">Reset password</a>
+        </div>
+    </div>
+    <footer class="footer">&copy; {{ 2024 }} Trail Attendance System</footer>
+    <style>
+        .navbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,0.97);
+            box-shadow: 0 2px 16px rgba(59,130,246,0.08);
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2.5rem;
+        }
+        .navbar-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .navbar-link {
+            color: #2563eb;
+            font-size: 1.1rem;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        .footer {
+            text-align: center;
+            color: #888;
+            font-size: 1rem;
+            margin-top: 2.2rem;
+            letter-spacing: 0.5px;
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.97);
+            padding: 0.7rem 0;
+        }
+        body { padding-top: 70px; padding-bottom: 60px; }
+    </style>
+</body>
+</html> 
